@@ -7,8 +7,8 @@
 
 include('db_util.php');
 
-$ids = $_POST['id'];
-$url = $_POST['url'];
+$ids = $_GET['id'];
+$url = $_GET['url'];
 
 foreach ($ids as $id) {
   setImg($id, $url);
