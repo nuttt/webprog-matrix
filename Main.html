@@ -100,7 +100,19 @@
       
       
     <script>
+      var getImg = function(id) {
+        $.ajax({
+          url: 'http://nuttt-webprog.azurewebsites.net/get.php',
+          data: {id:id},method:"get"
+        }).done(function(respond){
+          alert(respond);
+        }
+        
+        
+        );
+      }
       $( "#b1" ).click(function() {
+        getImg(1);
         $("body").css('background-image', 'url("get.php?id=1")');
       });
       $( "#b2" ).click(function() {
@@ -115,6 +127,9 @@
       $( "#b5" ).click(function() {
         $("body").css('background-image', 'url("get.php?id=5")');
       });
+      
+      
+      
     </script>  
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
