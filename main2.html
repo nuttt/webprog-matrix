@@ -81,7 +81,7 @@
             <div class="form-group">
               <input type="text" placeholder="image URL" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button id="submit" type="submit" class="btn btn-success">Submit</button>
           </form>
             </ul>
          
@@ -120,6 +120,8 @@
       var autoUpdate = function() {
         getImg(currentId);
       }
+
+
 
       setInterval(autoUpdate, 2000);
       
