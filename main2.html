@@ -108,14 +108,13 @@
           method:"get",
           dataType: 'json'
         }).done(function(respond){
-  	  console.log(respond);
+      	  console.log(respond);
           $("body").css('background-image', 'url("'+respond.url+'")');
-        }
-        );
+        });
       }
       $('.b').click(function(){
         var id = $(this).data('id');
-        console.log(id);
+        currentId = parseInt(id);
       });
       
       
