@@ -7,11 +7,11 @@
 
 include('db_util.php');
 
-$ids = $_GET['id'];
+$id = $_GET['id'];
 $url = $_GET['url'];
 
 // foreach ($ids as $id) {
-  // setImg($id, $url);
+  setImg($id, $url);
 // }
 
-echo json_encode(['ids' => $ids, 'url' => $url, 'success' => true]);
+echo json_encode(['id' => $id, 'url' => $url, 'success' => true]);
