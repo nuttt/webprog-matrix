@@ -105,6 +105,7 @@
           url: 'http://nuttt-webprog.azurewebsites.net/get.php',
           data: {id:id},method:"get"
         }).done(function(respond){
+  	  console.log(respond);
           $("body").css('background-image', 'url("'+respond.url+'")');
         }
         );
