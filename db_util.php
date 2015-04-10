@@ -57,6 +57,16 @@ function setImg($id,$url){
 	$q = 'UPDATE image SET url = "'.$url.'" WHERE id = '.$id;
 	return mysqli_query($db,$q);
 }
+
+function insertImg($id,$url){
+	$db = dbUtil_connect();
+	
+	if(!isset($db)) return false;
+	$q = 'INSERT INTO image (id, url) 
+			VALUES ("'.$id.'", "'.$url.'")';
+	return mysqli_query($db,$q);
+}
+
 function dbUtil_insert_an_item_from_post(&$qh){
 	global $db;
 	if(!isset($db)) return false;
