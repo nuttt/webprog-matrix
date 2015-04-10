@@ -103,8 +103,9 @@
       var getImg = function(id) {
         $.ajax({
           url: 'http://nuttt-webprog.azurewebsites.net/get.php',
-          data: {id:id},method:"get",
-          type: 'json'
+          data: {id:id},
+          method:"get",
+          dataType: 'json'
         }).done(function(respond){
   	  console.log(respond);
           $("body").css('background-image', 'url("'+respond.url+'")');
