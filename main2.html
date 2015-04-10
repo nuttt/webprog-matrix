@@ -62,19 +62,19 @@
             <div class="form-group">
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                  <input type="checkbox" autocomplete="off"> 1
+                  <input type="checkbox" id="checkbox1" name="targetId" value="1" autocomplete="off"> 1
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 2
+                  <input type="checkbox" id="checkbox1" name="targetId" value="2" autocomplete="off"> 2
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 3
+                  <input type="checkbox" id="checkbox1" name="targetId" value="3" autocomplete="off"> 3
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 4
+                  <input type="checkbox" id="checkbox1" name="targetId" value="4" autocomplete="off"> 4
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 5
+                  <input type="checkbox" id="checkbox1" name="targetId" value="5" autocomplete="off"> 5
                 </label>
               </div>
             </div>
@@ -123,7 +123,8 @@
 
       $('#submit').click(function(e){
         e.preventDefault();
-        console.log('click');
+        var checkbox = $('input[name="locationthemes"]:checked');
+        console.log(checkbox);
       });
 
       setInterval(autoUpdate, 2000);
