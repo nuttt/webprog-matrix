@@ -11,7 +11,7 @@ $id = $_GET['id'];
 $url = $_GET['url'];
 
 // foreach ($ids as $id) {
-  setImg($id, $url);
+ $success = setImg($id, $url);
 // }
 
-echo json_encode(['id' => $id, 'url' => $url, 'success' => true]);
+echo json_encode(['id' => $id, 'url' => $url, 'success' => $success]);
