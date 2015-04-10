@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -125,10 +125,12 @@
         getImg(5);
       });
       
-      $( "#submit" ).click(function() {
+      $("#submit").click(function () {
+        var checkedID = [];
         var imgurl = $("imageurl").val();
-        var checkbox = $("label.active input").each(function() {
-           console.log($(this).attr('value') );
+        var checkbox = $("label.active input").each(function () {
+            checkedID.push($(this).attr('value'));
+            console.log($(this).attr('value'));
         });
         console.log(imgurl);
         console.log(checkbox);

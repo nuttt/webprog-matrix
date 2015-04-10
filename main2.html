@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -112,6 +112,18 @@
           $("body").css('background-image', 'url("'+respond.url+'")');
         });
       }
+
+      var postImg = function (id,imgurl) {
+          $.ajax({
+              url: 'http://nuttt-webprog.azurewebsites.net/post.php',
+              data: { id: id, url: imgurl},
+              method: "post",
+              dataType: 'json'
+          }).done(function (respond) {
+              console.log(respond);
+          });
+      }
+
       $('.b').click(function(){
         var id = $(this).data('id');
         currentId = parseInt(id);
@@ -123,8 +135,16 @@
 
       $('#submit').click(function(e){
         e.preventDefault();
-        var checkbox = $('input[name="locationthemes"]:checked');
-        console.log(checkbox);
+       // var checkbox = $('input[name="locationthemes"]:checked');
+       //console.log(checkbox);
+
+       var checkedID = [];
+       var imgurl = $("imageurl").val();
+       var checkbox = $("label.active input").each(function () {
+            checkedID.push($(this).attr('value'));
+            console.log($(this).attr('value'));
+       });
+       postImg(checkedID,imgurl);
       });
 
       setInterval(autoUpdate, 2000);
