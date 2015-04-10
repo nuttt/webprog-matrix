@@ -10,6 +10,5 @@
 include('db_util.php');
 
 $id = $_GET['id'];
-$imgUrl = getImg(1);
-echo "new";
+$imgUrl = getImg($id);
 echo json_encode(['id' => $id, 'url' => $imgUrl]);

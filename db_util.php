@@ -47,7 +47,7 @@ function getImg($id){
 	$q = 'SELECT url FROM image WHERE id = '.$id;
 	$result = mysqli_query($db,$q);
 	$row = mysqli_fetch_array($result);
-	return $row;
+	return $row["url"];
 }
 
 function setImg($id,$url){
