@@ -62,26 +62,26 @@
             <div class="form-group">
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                  <input type="checkbox" autocomplete="off"> 1
+                  <input type="checkbox" value="1" autocomplete="off"> 1
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 2
+                  <input type="checkbox" value="2" autocomplete="off"> 2
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 3
+                  <input type="checkbox" value="3" autocomplete="off"> 3
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 4
+                  <input type="checkbox" value="4" autocomplete="off"> 4
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" autocomplete="off"> 5
+                  <input type="checkbox" value="5" autocomplete="off"> 5
                 </label>
               </div>
             </div>
             <div class="form-group">
-              <input type="text" placeholder="image URL" class="form-control">
+              <input type="text" placeholder="image URL" class="form-control" id="imageurl">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
           </form>
             </ul>
          
@@ -100,15 +100,11 @@
       
       
     <script>
-      var currentId = 1;
       var getImg = function(id) {
         $.ajax({
           url: 'http://nuttt-webprog.azurewebsites.net/get.php',
-          data: {id:id},
-          method:"get",
-          dataType: 'json'
+          data: {id:id},method:"get"
         }).done(function(respond){
-  	  console.log(respond);
           $("body").css('background-image', 'url("'+respond.url+'")');
         }
         );
@@ -129,6 +125,14 @@
         getImg(5);
       });
       
+      $( "#submit" ).click(function() {
+        var imgurl = $("imageurl").val();
+        var checkbox = $("label.active input").each(function() {
+           console.log($(this).attr('value') );
+        });
+        console.log(imgurl);
+        console.log(checkbox);
+      });
       
       
     </script>  
