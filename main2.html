@@ -116,6 +116,12 @@
         var id = $(this).data('id');
         currentId = parseInt(id);
       });
+
+      var autoUpdate = function() {
+        getImg(currentId);
+      }
+
+      setInterval(autoUpdate, 1)
       
       
       
