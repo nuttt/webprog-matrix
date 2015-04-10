@@ -121,7 +121,9 @@
         getImg(currentId);
       }
 
-
+      $('#submit').click(function(e){
+        e.preventDefault();
+      });
 
       setInterval(autoUpdate, 2000);
       
