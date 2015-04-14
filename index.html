@@ -15,6 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="nprogress.css">
+    <link rel="stylesheet" href="animate.css">
 
     <!-- Custom styles for this template -->
     <link href="navbar.css" rel="stylesheet">
@@ -104,10 +105,12 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="bootstrap-notify.min.js"></script>
     <script src="nprogress.js"></script>
       
     <script>
       var currentId = 1;
+      var currentImgUrl = '';
       var getImg = function(id) {
         $.ajax({
           url: 'get.php',
@@ -117,7 +120,19 @@
           dataType: 'json'
         }).done(function(respond){
       	  console.log(respond);
-          $("body").css('background-image', 'url("'+respond.url+'")');
+          var newImgUrl = respond.url;
+          if (newImgUrl !== currentImgUrl) {
+            currentImgUrl = newImgUrl;
+            $.notify({
+                message: 'New image incoming!'
+              },{
+                type: 'warning',
+                delay: 2000,
+                newest_on_top: true
+              });
+            $("body").css('background-image', 'url("'+newImgUrl+'")');  
+          }
+          
           NProgress.done();
         });
       }
@@ -135,6 +150,13 @@
           }).done(function (respond) {
               NProgress.done();
               console.log(respond);
+              $.notify({
+                message: 'Request Sent to ID ' + respond.ids.join(', ') 
+              },{
+                type: 'info',
+                delay: 2000,
+                newest_on_top: true
+              });
           });
       }
 
