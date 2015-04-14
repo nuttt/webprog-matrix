@@ -51,37 +51,37 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ID <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a id="b1" class="b" data-id="1">1</a></li>
-                  <li><a id="b2" class="b" data-id="2">2</a></li>
-                  <li><a id="b3" class="b" data-id="3">3</a></li>
-                  <li><a id="b4" class="b" data-id="4">4</a></li>
-				          <li><a id="b5" class="b" data-id="5">5</a></li>
+                  <li><a id="b1">1</a></li>
+                  <li><a id="b2">2</a></li>
+                  <li><a id="b3">3</a></li>
+                  <li><a id="b4">4</a></li>
+				          <li><a id="b5">5</a></li>
                 </ul>
               </li>
               <form class="navbar-form navbar-right">
             <div class="form-group">
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                  <input type="checkbox" id="checkbox1" name="targetId" value="1" autocomplete="off"> 1
+                  <input type="checkbox" value="1" autocomplete="off"> 1
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" id="checkbox1" name="targetId" value="2" autocomplete="off"> 2
+                  <input type="checkbox" value="2" autocomplete="off"> 2
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" id="checkbox1" name="targetId" value="3" autocomplete="off"> 3
+                  <input type="checkbox" value="3" autocomplete="off"> 3
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" id="checkbox1" name="targetId" value="4" autocomplete="off"> 4
+                  <input type="checkbox" value="4" autocomplete="off"> 4
                 </label>
                 <label class="btn btn-primary">
-                  <input type="checkbox" id="checkbox1" name="targetId" value="5" autocomplete="off"> 5
+                  <input type="checkbox" value="5" autocomplete="off"> 5
                 </label>
               </div>
             </div>
             <div class="form-group">
-              <input type="text" placeholder="image URL" class="form-control">
+              <input type="text" placeholder="image URL" class="form-control" id="imageurl">
             </div>
-            <button id="submit" type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
           </form>
             </ul>
          
@@ -100,59 +100,46 @@
       
       
     <script>
-      var currentId = 1;
       var getImg = function(id) {
         $.ajax({
-          url: 'http://nuttt-webprog.azurewebsites.net/get.php',
-          data: {id:id},
-          method:"get",
-          dataType: 'json'
+          url: 'get.php',
+          data: {
+            id: id
+          },
+          method:"get"
         }).done(function(respond){
-      	  console.log(respond);
           $("body").css('background-image', 'url("'+respond.url+'")');
-        });
+        }
+        );
       }
-
-      var postImg = function (id,imgurl) {
-          $.ajax({
-              url: 'http://nuttt-webprog.azurewebsites.net/set.php',
-              data: { id: id, url: imgurl},
-              method: "post",
-              dataType: 'json'
-          }).done(function (respond) {
-              console.log(respond);
-          });
-      }
-
-      $('.b').click(function(){
-        var id = $(this).data('id');
-        currentId = parseInt(id);
+      $( "#b1" ).click(function() {
+        getImg(1);    
       });
-
-      var autoUpdate = function() {
-        getImg(currentId);
-      }
-
-      $('#submit').click(function(e){
-        e.preventDefault();
-       // var checkbox = $('input[name="locationthemes"]:checked');
-       //console.log(checkbox);
-
-       var checkedID = [];
-       var imgurl = $("imageurl").val();
-       var checkbox = $("label.active input").each(function () {
+      $( "#b2" ).click(function() {
+        getImg(2);
+      });
+      $( "#b3" ).click(function() {
+        getImg(3);
+      });
+      $( "#b4" ).click(function() {
+        getImg(4);
+      });
+      $( "#b5" ).click(function() {
+        getImg(5);
+      });
+      
+      $("#submit").click(function () {
+        var checkedID = [];
+        var imgurl = $("imageurl").val();
+        var checkbox = $("label.active input").each(function () {
             checkedID.push($(this).attr('value'));
             console.log($(this).attr('value'));
-       });
-       postImg(checkedID,imgurl);
+        });
+        console.log(imgurl);
+        console.log(checkbox);
       });
-
-      setInterval(autoUpdate, 2000);
-      
       
       
     </script>  
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
