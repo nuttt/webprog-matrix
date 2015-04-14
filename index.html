@@ -113,6 +113,7 @@
           url: 'get.php',
           data: {id:id},
           method:"get",
+          cache: false,
           dataType: 'json'
         }).done(function(respond){
       	  console.log(respond);
@@ -128,6 +129,7 @@
           $.ajax({
               url: 'set.php',
               data: data,
+              cache: false,
               method: 'post',
               dataType: 'json'
           }).done(function (respond) {
