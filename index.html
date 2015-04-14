@@ -123,13 +123,6 @@
           var newImgUrl = respond.url;
           if (newImgUrl !== currentImgUrl) {
             currentImgUrl = newImgUrl;
-            $.notify({
-                message: 'New image incoming!'
-              },{
-                type: 'warning',
-                delay: 2000,
-                newest_on_top: true
-              });
             $("body").css('background-image', 'url("'+newImgUrl+'")');  
           }
           
